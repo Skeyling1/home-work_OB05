@@ -16,7 +16,10 @@ position = (x, y)
 
 
 class Head:
-    pass
+    def __init__(self):
+        self.position = position
+    def moving(self):
+        screen.blit(image, position)
 
 class Tail:
     pass
@@ -24,6 +27,7 @@ class Tail:
 class Eatables:
     pass
 
+snail = Head()
 running = True
 while running:
     for event in pygame.event.get():
@@ -31,7 +35,7 @@ while running:
             running = False
 
     screen.fill((0, 0, 0))
-    screen.blit(image, position)
+    snail.moving()
     pygame.time.delay(10)
 
 

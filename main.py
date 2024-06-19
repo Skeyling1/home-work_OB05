@@ -1,4 +1,5 @@
 # игра змейка
+# незаконченная
 
 import pygame
 pygame.init()
@@ -61,7 +62,7 @@ while running:
 
     x += direction_x
     y += direction_y
-    
+
     if keys[pygame.K_RIGHT]:
         direction_x = 1
     elif keys[pygame.K_LEFT]:

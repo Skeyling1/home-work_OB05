@@ -13,26 +13,34 @@ y = 50
 direction_x = 0
 direction_y = 0
 position = (x, y)
-position1 = (x-25, y-25)
+
 
 
 class Head:
-    def __init__(self):
-        self.position = position
+    def __init__(self, start_position):
+        self.start_position = start_position
     def moving(self):
         screen.blit(image, position)
+        return position
 
 class Tail(Head):
-    def super(Tail, self):
-        self.position = position1
-    def moving(self):
-        screen.blit(image, position1)
+    pass
+
 
 class Eatables:
     pass
 
-snail = Head()
-tail1 = Tail()
+head = Head(position)
+tail = []
+
+for i in range(5):
+    gx = 50 - 25 * i
+    gy = 50 - 25 * i
+    pos = (gx, gy)
+    g = Tail(pos)
+    tail.append(g)
+
+
 
 running = True
 while running:
@@ -41,8 +49,11 @@ while running:
             running = False
 
     screen.fill((0, 0, 0))
-    snail.moving()
-    tail1.moving()
+
+    head.moving()
+    for i in tail:
+        i.moving()
+
     pygame.time.delay(10)
 
 
@@ -50,6 +61,7 @@ while running:
 
     x += direction_x
     y += direction_y
+    
     if keys[pygame.K_RIGHT]:
         direction_x = 1
     elif keys[pygame.K_LEFT]:
@@ -60,7 +72,7 @@ while running:
         direction_y = 1
 
     position = (x, y)
-    position1 = (x, y)
+
 
 
 
